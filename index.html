@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GB Web Conseil</title>
+  <meta name="description" content="Charte graphique GB Web Conseil">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var theme = params.get('theme');
+      if (theme !== 'dark' && theme !== 'light') {
+        try { theme = localStorage.getItem('gbwc-demo-theme'); } catch (e) {}
+      }
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js" defer></script>
+  <script src="components-demo.js" defer></script>
+</head>
+<body>
+
+  <header class="demo-header">
+    <div class="container">
+      <h1 class="demo-header__title">GB Web Conseil</h1>
+      <p class="demo-header__subtitle">Charte graphique et composants du site.</p>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Menu principal (démo)" data-nav>
+    <div class="container nav__bar">
+      <a href="#" class="nav__brand" aria-label="GB Web Conseil, accueil">
+        <img src="assets/logo-symbol.png" alt="" class="nav__brand-logo" width="40" height="40">
+      </a>
+
+      <div class="nav__desktop" id="nav-desktop">
+        <ul class="nav__list">
+          <li><a href="#logo" class="nav__link">Logo</a></li>
+          <li><a href="#colors" class="nav__link">Couleurs</a></li>
+          <li><a href="#typography" class="nav__link">Typographie</a></li>
+          <li><a href="#buttons" class="nav__link">Boutons</a></li>
+          <li><a href="#forms" class="nav__link">Formulaires</a></li>
+          <li><a href="#cards" class="nav__link">Cartes</a></li>
+          <li><a href="#badges" class="nav__link">Badges</a></li>
+          <li><a href="#alerts" class="nav__link">Alertes</a></li>
+          <li><a href="#navigation" class="nav__link">Navigation</a></li>
+        </ul>
+
+        <div class="dropdown" data-dropdown>
+          <button type="button" class="dropdown__trigger nav__link" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">
+            Plus
+            <span class="dropdown__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="dropdown__panel" id="nav-more-menu" role="menu" hidden>
+            <ul class="dropdown__list">
+              <li role="none"><a href="#breadcrumb" class="dropdown__link" role="menuitem">Fil d'Ariane</a></li>
+              <li role="none"><a href="#tabs" class="dropdown__link" role="menuitem">Onglets</a></li>
+              <li role="none"><a href="#modal" class="dropdown__link" role="menuitem">Modale</a></li>
+              <li role="none"><a href="#pagination" class="dropdown__link" role="menuitem">Pagination</a></li>
+              <li role="none"><a href="#avatar" class="dropdown__link" role="menuitem">Avatar</a></li>
+              <li role="none"><a href="#progress" class="dropdown__link" role="menuitem">Progression</a></li>
+              <li role="none"><a href="#table" class="dropdown__link" role="menuitem">Tableau</a></li>
+              <li role="none"><a href="#toast" class="dropdown__link" role="menuitem">Toast</a></li>
+              <li role="none"><a href="#tooltip" class="dropdown__link" role="menuitem">Tooltip</a></li>
+              <li role="none"><a href="#footer" class="dropdown__link" role="menuitem">Pied de page</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav__end">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Activer le fond noir">
+          <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+          <span class="theme-toggle__label">Fond noir</span>
+        </button>
+
+        <button type="button" class="nav__burger" id="nav-burger" aria-expanded="false" aria-controls="nav-drawer" aria-label="Ouvrir le menu">
+          <span class="nav__burger-box" aria-hidden="true">
+            <span class="nav__burger-line"></span>
+            <span class="nav__burger-line"></span>
+            <span class="nav__burger-line"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__drawer" id="nav-drawer" hidden>
+      <div class="nav__drawer-backdrop" data-nav-close tabindex="-1"></div>
+      <div class="nav__drawer-panel" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+        <div class="nav__drawer-header">
+          <span class="nav__drawer-title">Menu</span>
+          <button type="button" class="nav__drawer-close" data-nav-close aria-label="Fermer le menu">
+            <span aria-hidden="true">✕</span>
+          </button>
+        </div>
+        <ul class="nav__drawer-list">
+          <li><a href="#logo" class="nav__drawer-link" data-nav-close>Logo</a></li>
+          <li><a href="#colors" class="nav__drawer-link" data-nav-close>Couleurs</a></li>
+          <li><a href="#typography" class="nav__drawer-link" data-nav-close>Typographie</a></li>
+          <li><a href="#buttons" class="nav__drawer-link" data-nav-close>Boutons</a></li>
+          <li><a href="#forms" class="nav__drawer-link" data-nav-close>Formulaires</a></li>
+          <li><a href="#cards" class="nav__drawer-link" data-nav-close>Cartes</a></li>
+          <li><a href="#badges" class="nav__drawer-link" data-nav-close>Badges</a></li>
+          <li><a href="#alerts" class="nav__drawer-link" data-nav-close>Alertes</a></li>
+          <li><a href="#navigation" class="nav__drawer-link" data-nav-close>Navigation</a></li>
+          <li><a href="#breadcrumb" class="nav__drawer-link" data-nav-close>Fil d'Ariane</a></li>
+          <li><a href="#tabs" class="nav__drawer-link" data-nav-close>Onglets</a></li>
+          <li><a href="#modal" class="nav__drawer-link" data-nav-close>Modale</a></li>
+          <li><a href="#pagination" class="nav__drawer-link" data-nav-close>Pagination</a></li>
+          <li><a href="#avatar" class="nav__drawer-link" data-nav-close>Avatar</a></li>
+          <li><a href="#progress" class="nav__drawer-link" data-nav-close>Progression</a></li>
+          <li><a href="#table" class="nav__drawer-link" data-nav-close>Tableau</a></li>
+          <li><a href="#toast" class="nav__drawer-link" data-nav-close>Toast</a></li>
+          <li><a href="#tooltip" class="nav__drawer-link" data-nav-close>Tooltip</a></li>
+          <li><a href="#footer" class="nav__drawer-link" data-nav-close>Pied de page</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <section id="logo" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Logo</h2>
+        <p class="demo-section__desc">Les trois fichiers du dossier <code>assets/</code>.</p>
+
+        <div class="logo-showcase">
+          <figure class="logo-showcase__item">
+            <div class="logo-showcase__preview logo-showcase__preview--dark">
+              <img src="assets/logo-full.png" alt="Logo sur fond noir" class="logo-showcase__img logo-showcase__img--full">
+            </div>
+            <figcaption class="logo-showcase__caption">
+              <strong>Complet, fond sombre</strong>
+              <span>logo-full.png</span>
+            </figcaption>
+          </figure>
+
+          <figure class="logo-showcase__item">
+            <div class="logo-showcase__preview logo-showcase__preview--light">
+              <img src="assets/logo-full-transparent.png" alt="Logo fond transparent" class="logo-showcase__img logo-showcase__img--full">
+            </div>
+            <figcaption class="logo-showcase__caption">
+              <strong>Complet, transparent</strong>
+              <span>logo-full-transparent.png</span>
+            </figcaption>
+          </figure>
+
+          <figure class="logo-showcase__item">
+            <div class="logo-showcase__preview logo-showcase__preview--light">
+              <img src="assets/logo-symbol.png" alt="Symbole" class="logo-showcase__img logo-showcase__img--symbol">
+            </div>
+            <figcaption class="logo-showcase__caption">
+              <strong>Symbole</strong>
+              <span>logo-symbol.png</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="colors" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Couleurs</h2>
+        <p class="demo-section__desc">Bleu marine du logo, neutres et états (succès, alerte, erreur).</p>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Primaire</h3>
+          <div class="swatch-grid">
+            <div class="swatch">
+              <div class="swatch__color" style="background: #E6EEF5;"></div>
+              <div class="swatch__info"><span class="swatch__name">primary-50</span><span class="swatch__hex">#E6EEF5</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #8FB3D4;"></div>
+              <div class="swatch__info"><span class="swatch__name">primary-200</span><span class="swatch__hex">#8FB3D4</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #2E6FA8;"></div>
+              <div class="swatch__info"><span class="swatch__name">primary-400</span><span class="swatch__hex">#2E6FA8</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #00487C;"></div>
+              <div class="swatch__info"><span class="swatch__name">primary-500</span><span class="swatch__hex">#00487C</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #003E6B;"></div>
+              <div class="swatch__info"><span class="swatch__name">primary-600</span><span class="swatch__hex">#003E6B</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #001D36;"></div>
+              <div class="swatch__info"><span class="swatch__name">primary-900</span><span class="swatch__hex">#001D36</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Sémantiques</h3>
+          <div class="swatch-grid">
+            <div class="swatch">
+              <div class="swatch__color" style="background: #059669;"></div>
+              <div class="swatch__info"><span class="swatch__name">success-500</span><span class="swatch__hex">#059669</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #D97706;"></div>
+              <div class="swatch__info"><span class="swatch__name">warning-500</span><span class="swatch__hex">#D97706</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #DC2626;"></div>
+              <div class="swatch__info"><span class="swatch__name">error-500</span><span class="swatch__hex">#DC2626</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #2563EB;"></div>
+              <div class="swatch__info"><span class="swatch__name">info-500</span><span class="swatch__hex">#2563EB</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="typography" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Typographie</h2>
+        <p class="demo-section__desc">Échelle et familles définies dans <code>tokens/typography.json</code>. Voir <code>guidelines/typography-usage.md</code>.</p>
+
+        <div class="type-families">
+          <div class="type-family">
+            <span class="type-family__role">Display</span>
+            <span class="type-family__name">Source Serif 4</span>
+            <code class="type-family__token">--font-family-display</code>
+          </div>
+          <div class="type-family">
+            <span class="type-family__role">Body / UI</span>
+            <span class="type-family__name">Inter</span>
+            <code class="type-family__token">--font-family-body</code>
+          </div>
+          <div class="type-family">
+            <span class="type-family__role">Mono</span>
+            <span class="type-family__name">JetBrains Mono</span>
+            <code class="type-family__token">--font-family-mono</code>
+          </div>
+        </div>
+
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">display-lg</code>
+            <span class="type-sample__spec">Source Serif 4 · 60px / 3.75rem · Bold 700 · line-height-tight</span>
+          </div>
+          <p class="type-display-lg">Conseil en développement web</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">heading-1</code>
+            <span class="type-sample__spec">Source Serif 4 · 36px / 2.25rem · Bold 700 · line-height-tight</span>
+          </div>
+          <p class="type-heading-1">Nos services</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">heading-2</code>
+            <span class="type-sample__spec">Source Serif 4 · 30px / 1.875rem · Semibold 600 · line-height-snug</span>
+          </div>
+          <p class="type-heading-2">Accompagnement technique</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">body-lg</code>
+            <span class="type-sample__spec">Inter · 18px / 1.125rem · Regular 400 · line-height-relaxed</span>
+          </div>
+          <p class="type-body-lg">Nous accompagnons les entreprises sur la conception, le développement et la maintenance de leurs applications web.</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">body-md</code>
+            <span class="type-sample__spec">Inter · 16px / 1rem · Regular 400 · line-height-normal</span>
+          </div>
+          <p class="type-body-md">Chaque projet est unique. Nous privilégions des livrables maintenables et une communication claire tout au long du projet.</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">body-md</code>
+            <span class="type-sample__spec">Inter · 16px / 1rem · exemple de paragraphe (Lorem ipsum)</span>
+          </div>
+          <p class="type-body-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p class="type-body-md">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">overline</code>
+            <span class="type-sample__spec">Inter · 12px / 0.75rem · Semibold 600 · uppercase · letter-spacing-wider</span>
+          </div>
+          <p class="type-overline">Développement web</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="buttons" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Boutons</h2>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Variantes</h3>
+          <div class="demo-row">
+            <button type="button" class="btn btn--primary btn--md">Primaire</button>
+            <button type="button" class="btn btn--secondary btn--md">Secondaire</button>
+            <button type="button" class="btn btn--ghost btn--md">Ghost</button>
+            <button type="button" class="btn btn--danger btn--md">Danger</button>
+            <button type="button" class="btn btn--primary btn--md" disabled>Désactivé</button>
+          </div>
+        </div>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Tailles</h3>
+          <div class="demo-row">
+            <button type="button" class="btn btn--primary btn--sm">sm</button>
+            <button type="button" class="btn btn--primary btn--md">md</button>
+            <button type="button" class="btn btn--primary btn--lg">lg</button>
+          </div>
+        </div>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Chargement</h3>
+          <div class="demo-row">
+            <button type="button" class="btn btn--primary btn--md btn--loading" aria-busy="true">
+              <span class="btn__spinner" aria-hidden="true"></span>
+              Envoi en cours…
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="forms" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Formulaires</h2>
+
+        <div class="demo-grid">
+          <div>
+            <div class="form-group">
+              <label for="name" class="form-label">Nom complet</label>
+              <input type="text" id="name" class="form-input" placeholder="Jean Dupont">
+              <p class="form-hint">Tel qu'il figurera sur le devis.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Adresse e-mail</label>
+              <input type="email" id="email" class="form-input form-input--error" value="email-invalide" aria-invalid="true" aria-describedby="email-error">
+              <p id="email-error" class="form-error" role="alert">
+                <span aria-hidden="true">✕</span> Veuillez saisir une adresse e-mail valide.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label for="service" class="form-label">Service</label>
+              <select id="service" class="form-select">
+                <option value="">Choisir…</option>
+                <option value="audit">Audit technique</option>
+                <option value="dev">Développement sur mesure</option>
+                <option value="maintenance">Maintenance</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-textarea" placeholder="Décrivez votre besoin…"></textarea>
+            </div>
+          </div>
+
+          <div>
+            <div class="form-group">
+              <fieldset class="form-fieldset">
+                <legend class="form-label">Type de projet</legend>
+                <label class="form-check">
+                  <input type="radio" name="project-type" value="new" class="form-check__input" checked>
+                  <span class="form-check__label">Nouveau projet</span>
+                </label>
+                <label class="form-check">
+                  <input type="radio" name="project-type" value="existing" class="form-check__input">
+                  <span class="form-check__label">Projet existant</span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="form-group">
+              <label class="form-check">
+                <input type="checkbox" class="form-check__input" id="consent">
+                <span class="form-check__label">J'accepte d'être recontacté</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="disabled-field" class="form-label">Champ désactivé</label>
+              <input type="text" id="disabled-field" class="form-input" value="Non modifiable" disabled>
+            </div>
+
+            <button type="button" class="btn btn--primary btn--md">Envoyer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cards" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Cartes</h2>
+
+        <div class="demo-grid">
+          <article class="card">
+            <p class="card__overline">Développement</p>
+            <h3 class="card__title">Applications sur mesure</h3>
+            <p class="card__desc">Sites et applications web adaptés à votre activité, avec un code maintenable.</p>
+            <div class="card__footer">
+              <a href="#" class="btn btn--ghost btn--sm">En savoir plus</a>
+            </div>
+          </article>
+
+          <article class="card card--elevated">
+            <p class="card__overline">Conseil</p>
+            <h3 class="card__title">Audit technique</h3>
+            <p class="card__desc">Revue de stack, dette technique et recommandations priorisées.</p>
+            <div class="card__footer">
+              <a href="#" class="btn btn--secondary btn--sm">Détails</a>
+            </div>
+          </article>
+
+          <a href="#" class="card card--interactive card--link">
+            <p class="card__overline">Maintenance</p>
+            <h3 class="card__title">Support et évolution</h3>
+            <p class="card__desc">Correctifs, mises à jour et évolutions dans la durée.</p>
+            <div class="card__footer">
+              <span class="badge badge--brand badge--sm">Lien</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="badges" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Badges</h2>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Variantes</h3>
+          <div class="demo-row">
+            <span class="badge badge--default badge--md">Neutre</span>
+            <span class="badge badge--brand badge--md">Marque</span>
+            <span class="badge badge--success badge--md">Actif</span>
+            <span class="badge badge--warning badge--md">En attente</span>
+            <span class="badge badge--error badge--md">Erreur</span>
+            <span class="badge badge--info badge--md">Info</span>
+          </div>
+        </div>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Tailles</h3>
+          <div class="demo-row">
+            <span class="badge badge--brand badge--sm">sm</span>
+            <span class="badge badge--brand badge--md">md</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="alerts" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Alertes</h2>
+
+        <div class="demo-stack">
+          <div class="alert alert--info" role="status">
+            <span class="alert__icon" aria-hidden="true">ℹ</span>
+            <div class="alert__content">
+              <p class="alert__title">Information</p>
+              <p class="alert__message">Votre demande sera traitée sous 48 h ouvrées.</p>
+            </div>
+          </div>
+
+          <div class="alert alert--success" role="status">
+            <span class="alert__icon" aria-hidden="true">✓</span>
+            <div class="alert__content">
+              <p class="alert__title">Message envoyé</p>
+              <p class="alert__message">Nous vous recontactons rapidement.</p>
+            </div>
+          </div>
+
+          <div class="alert alert--warning" role="alert">
+            <span class="alert__icon" aria-hidden="true">⚠</span>
+            <div class="alert__content">
+              <p class="alert__title">Profil incomplet</p>
+              <p class="alert__message">Complétez votre profil avant d'envoyer une demande de devis.</p>
+            </div>
+          </div>
+
+          <div class="alert alert--error" role="alert">
+            <span class="alert__icon" aria-hidden="true">✕</span>
+            <div class="alert__content">
+              <p class="alert__title">Échec de l'envoi</p>
+              <p class="alert__message">Réessayez ou contactez-nous par e-mail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="navigation" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Navigation</h2>
+        <p class="demo-section__desc">Breakpoint burger : <strong>1024px</strong>. La barre sticky en tête de page réutilise ces classes pour parcourir cette démo.</p>
+
+        <div class="component-preview">
+          <nav class="nav nav--static" aria-label="Exemple de navigation" data-nav>
+            <div class="nav__bar">
+              <a href="#" class="nav__brand" aria-label="GB Web Conseil">
+                <img src="assets/logo-symbol.png" alt="" class="nav__brand-logo" width="40" height="40">
+              </a>
+              <div class="nav__desktop">
+                <ul class="nav__list">
+                  <li><a href="#" class="nav__link">Accueil</a></li>
+                  <li><a href="#" class="nav__link">Services</a></li>
+                  <li><a href="#" class="nav__link">Références</a></li>
+                  <li><a href="#" class="nav__link">Contact</a></li>
+                  <li><span class="nav__link nav__link--inactive" aria-disabled="true">Inactif</span></li>
+                </ul>
+                <div class="dropdown" data-dropdown>
+                  <button type="button" class="dropdown__trigger nav__link" aria-expanded="false" aria-haspopup="true" aria-controls="nav-preview-more">
+                    Plus
+                    <span class="dropdown__chevron" aria-hidden="true"></span>
+                  </button>
+                  <div class="dropdown__panel" id="nav-preview-more" role="menu" hidden>
+                    <ul class="dropdown__list">
+                      <li role="none"><a href="#" class="dropdown__link" role="menuitem">Mentions légales</a></li>
+                      <li role="none"><a href="#" class="dropdown__link" role="menuitem">Plan du site</a></li>
+                      <li role="none"><span class="dropdown__link dropdown__link--inactive" role="menuitem" aria-disabled="true">Inactif</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="nav__end">
+                <button type="button" class="nav__burger" aria-expanded="false" aria-controls="nav-preview-drawer" aria-label="Ouvrir le menu">
+                  <span class="nav__burger-box" aria-hidden="true">
+                    <span class="nav__burger-line"></span>
+                    <span class="nav__burger-line"></span>
+                    <span class="nav__burger-line"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="nav__drawer" id="nav-preview-drawer" hidden>
+              <div class="nav__drawer-backdrop" data-nav-close tabindex="-1"></div>
+              <div class="nav__drawer-panel" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+                <div class="nav__drawer-header">
+                  <span class="nav__drawer-title">Menu</span>
+                  <button type="button" class="nav__drawer-close" data-nav-close aria-label="Fermer le menu">
+                    <span aria-hidden="true">✕</span>
+                  </button>
+                </div>
+                <ul class="nav__drawer-list">
+                  <li><a href="#" class="nav__drawer-link" data-nav-close>Accueil</a></li>
+                  <li><a href="#" class="nav__drawer-link" data-nav-close>Services</a></li>
+                  <li><a href="#" class="nav__drawer-link" data-nav-close>Références</a></li>
+                  <li><a href="#" class="nav__drawer-link" data-nav-close>Contact</a></li>
+                  <li><a href="#" class="nav__drawer-link" data-nav-close>Mentions légales</a></li>
+                  <li><a href="#" class="nav__drawer-link" data-nav-close>Plan du site</a></li>
+                  <li><span class="nav__drawer-link nav__drawer-link--inactive" aria-disabled="true">Inactif</span></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <section id="breadcrumb" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Fil d'Ariane</h2>
+        <p class="demo-section__desc">Navigation secondaire pour situer la page dans la hiérarchie du site.</p>
+
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol class="breadcrumb__list">
+            <li class="breadcrumb__item">
+              <a href="#" class="breadcrumb__link">Accueil</a>
+            </li>
+            <li class="breadcrumb__item">
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a href="#" class="breadcrumb__link">Services</a>
+            </li>
+            <li class="breadcrumb__item">
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <span class="breadcrumb__current" aria-current="page">Audit technique</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <section id="tabs" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Onglets</h2>
+        <p class="demo-section__desc">Organiser du contenu connexe sans changer de page.</p>
+
+        <div class="tabs" data-tabs>
+          <div class="tabs__list" role="tablist" aria-label="Détails du service">
+            <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true">Vue d'ensemble</button>
+            <button type="button" class="tabs__tab" role="tab" id="tab-deliverables" aria-controls="panel-deliverables" aria-selected="false" tabindex="-1">Livrables</button>
+            <button type="button" class="tabs__tab" role="tab" id="tab-pricing" aria-controls="panel-pricing" aria-selected="false" tabindex="-1">Tarifs</button>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview">
+            <p>Analyse de votre stack, identification des risques et feuille de route priorisée sur 4 à 6 semaines.</p>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="panel-deliverables" aria-labelledby="tab-deliverables" hidden>
+            <p>Rapport écrit, restitution orale et liste d'actions classées par impact et effort.</p>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="panel-pricing" aria-labelledby="tab-pricing" hidden>
+            <p>Forfait selon la taille du projet. Devis après un premier échange de 30 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modal" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Modale</h2>
+        <p class="demo-section__desc">Dialogue focalisé pour confirmer une action ou afficher un formulaire court.</p>
+
+        <button type="button" class="btn btn--primary btn--md" id="modal-open-demo">Ouvrir la modale</button>
+      </div>
+    </section>
+
+    <section id="pagination" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Pagination</h2>
+        <p class="demo-section__desc">Parcourir une liste longue page par page.</p>
+
+        <nav class="pagination" aria-label="Pagination">
+          <ul class="pagination__list">
+            <li>
+              <a href="#" class="pagination__item pagination__item--prev" aria-label="Page précédente">
+                <span aria-hidden="true">←</span> Précédent
+              </a>
+            </li>
+            <li>
+              <a href="#" class="pagination__item" aria-label="Page 1">1</a>
+            </li>
+            <li>
+              <span class="pagination__ellipsis" aria-hidden="true">…</span>
+            </li>
+            <li>
+              <a href="#" class="pagination__item" aria-label="Page 4">4</a>
+            </li>
+            <li>
+              <span class="pagination__item pagination__item--current" aria-current="page" aria-label="Page 5, page actuelle">5</span>
+            </li>
+            <li>
+              <a href="#" class="pagination__item" aria-label="Page 6">6</a>
+            </li>
+            <li>
+              <span class="pagination__ellipsis" aria-hidden="true">…</span>
+            </li>
+            <li>
+              <a href="#" class="pagination__item" aria-label="Page 12">12</a>
+            </li>
+            <li>
+              <a href="#" class="pagination__item pagination__item--next" aria-label="Page suivante">
+                Suivant <span aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <section id="avatar" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Avatar</h2>
+        <p class="demo-section__desc">Représentation d'une personne ou d'une équipe.</p>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Initiales</h3>
+          <div class="demo-row">
+            <span class="avatar avatar--initials avatar--sm" aria-hidden="true">GB</span>
+            <span class="avatar avatar--initials avatar--md" aria-hidden="true">GB</span>
+            <span class="avatar avatar--initials avatar--lg" aria-hidden="true">GB</span>
+          </div>
+        </div>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Avec prénom</h3>
+          <div class="avatar-group">
+            <span class="avatar avatar--initials avatar--md" aria-hidden="true">GB</span>
+            <span class="avatar-group__name">Gérald B.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Barre de progression</h2>
+        <p class="demo-section__desc">Indiquer l'avancement d'une tâche.</p>
+
+        <div class="demo-subsection">
+          <label class="progress__label" for="progress-demo">Import du rapport</label>
+          <progress class="progress progress--md" id="progress-demo" max="100" value="60">60 %</progress>
+          <span class="progress__value">60 %</span>
+        </div>
+
+        <div class="demo-subsection">
+          <span class="progress__label" id="progress-indeterminate-label">Traitement en cours</span>
+          <div class="progress progress--indeterminate progress--md" role="progressbar" aria-labelledby="progress-indeterminate-label" aria-valuetext="En cours"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="table" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Tableau</h2>
+        <p class="demo-section__desc">Listes structurées avec en-têtes, badges de statut et défilement horizontal sur mobile.</p>
+
+        <div class="table-wrapper">
+          <table class="table table--striped">
+            <caption class="sr-only">Projets récents</caption>
+            <thead>
+              <tr>
+                <th scope="col">Projet</th>
+                <th scope="col">Client</th>
+                <th scope="col" class="table__cell--center">Statut</th>
+                <th scope="col" class="table__cell--numeric">Budget</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Refonte intranet</td>
+                <td>Acme SA</td>
+                <td class="table__cell--center"><span class="badge badge--success badge--sm">En cours</span></td>
+                <td class="table__cell--numeric">12 400 €</td>
+              </tr>
+              <tr>
+                <td>Audit stack</td>
+                <td>Beta SARL</td>
+                <td class="table__cell--center"><span class="badge badge--warning badge--sm">En attente</span></td>
+                <td class="table__cell--numeric">3 200 €</td>
+              </tr>
+              <tr>
+                <td>Maintenance annuelle</td>
+                <td>Gamma SAS</td>
+                <td class="table__cell--center"><span class="badge badge--default badge--sm">Clôturé</span></td>
+                <td class="table__cell--numeric">8 000 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="toast" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Toast</h2>
+        <p class="demo-section__desc">Notification temporaire. Cliquez pour afficher un exemple.</p>
+
+        <div class="demo-row">
+          <button type="button" class="btn btn--secondary btn--md" id="toast-demo-default">default</button>
+          <button type="button" class="btn btn--primary btn--md" id="toast-demo-success">success</button>
+          <button type="button" class="btn btn--danger btn--md" id="toast-demo-error">error</button>
+          <button type="button" class="btn btn--ghost btn--md" id="toast-demo-info">info</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tooltip" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Tooltip</h2>
+        <p class="demo-section__desc">Aide contextuelle au survol ou au focus clavier.</p>
+
+        <div class="demo-row">
+          <span class="tooltip">
+            <button type="button" class="btn btn--secondary btn--sm" aria-describedby="tooltip-top">Au-dessus</button>
+            <span class="tooltip__content" id="tooltip-top" role="tooltip">Texte affiché au-dessus du bouton.</span>
+          </span>
+          <span class="tooltip tooltip--bottom">
+            <button type="button" class="btn btn--secondary btn--sm" aria-describedby="tooltip-bottom">En dessous</button>
+            <span class="tooltip__content" id="tooltip-bottom" role="tooltip">Texte affiché sous le bouton.</span>
+          </span>
+          <span class="tooltip tooltip--left">
+            <button type="button" class="btn btn--secondary btn--sm" aria-describedby="tooltip-left">À gauche</button>
+            <span class="tooltip__content" id="tooltip-left" role="tooltip">Texte affiché à gauche du bouton.</span>
+          </span>
+          <span class="tooltip tooltip--right">
+            <button type="button" class="btn btn--secondary btn--sm" aria-describedby="tooltip-right">À droite</button>
+            <span class="tooltip__content" id="tooltip-right" role="tooltip">Texte affiché à droite du bouton.</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section id="footer" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Pied de page</h2>
+        <p class="demo-section__desc">Composant <code>site-footer</code> (§22) pour le site en production. Le pied minimal de cette démo reste <code>demo-footer</code>.</p>
+      </div>
+
+      <footer class="site-footer" aria-label="Pied de page">
+        <div class="container site-footer__inner">
+          <div class="site-footer__brand">
+            <img src="assets/logo-symbol.png" alt="" class="site-footer__logo" width="32" height="32">
+            <span class="site-footer__name">GB Web Conseil</span>
+          </div>
+          <nav class="site-footer__nav" aria-label="Liens pied de page">
+            <a href="#" class="site-footer__link">Services</a>
+            <a href="#" class="site-footer__link">Références</a>
+            <a href="#" class="site-footer__link">Contact</a>
+          </nav>
+        </div>
+        <div class="container site-footer__bottom">
+          <p>© 2026 GB Web Conseil · <a href="#" class="site-footer__link">Mentions légales</a></p>
+        </div>
+      </footer>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-section__title">Un projet en tête ?</h2>
+        <p class="cta-section__desc">Parlons-en lors d'un premier échange.</p>
+        <div class="demo-row demo-row--center">
+          <a href="#" class="btn btn--inverse btn--lg">Demander un devis</a>
+          <a href="#" class="btn btn--ghost btn--lg">Nos références</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="demo-footer">
+    <div class="container">
+      <p>GB Web Conseil - Design System v1.3 - Usage interne et référence d'implémentation</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" aria-describedby="demo-modal-desc" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__dialog">
+      <header class="modal__header">
+        <h2 class="modal__title" id="demo-modal-title">Confirmer l'envoi</h2>
+        <button type="button" class="modal__close" data-modal-close aria-label="Fermer">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </header>
+      <div class="modal__body">
+        <p id="demo-modal-desc">Votre demande de devis sera transmise à l'équipe. Vous recevrez une confirmation par e-mail.</p>
+      </div>
+      <footer class="modal__footer">
+        <button type="button" class="btn btn--secondary btn--md" data-modal-close>Annuler</button>
+        <button type="button" class="btn btn--primary btn--md" data-modal-close>Confirmer</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toast-region" role="region" aria-label="Notifications" aria-live="polite"></div>
+
+</body>
+</html>
