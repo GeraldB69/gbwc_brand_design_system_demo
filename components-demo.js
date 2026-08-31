@@ -3,57 +3,124 @@
  */
 (function () {
   function initDropdowns() {
+    var instances = [];
+
     document.querySelectorAll('[data-dropdown]').forEach(function (root) {
       var trigger = root.querySelector('.dropdown__trigger');
       var panel = root.querySelector('.dropdown__panel');
       if (!trigger || !panel) return;
 
+      // role="menu" engage le modele clavier ARIA complet (cf. guidelines : Modele clavier des menus)
+      var items = Array.prototype.slice.call(panel.querySelectorAll('[role="menuitem"]'));
+
+      items.forEach(function (item) {
+        item.tabIndex = -1;
+      });
+
       function isOpen() {
         return trigger.getAttribute('aria-expanded') === 'true';
       }
 
-      function open() {
+      function focusItem(index) {
+        if (!items.length) return;
+        var next = (index + items.length) % items.length;
+        items[next].focus();
+      }
+
+      function currentIndex() {
+        return items.indexOf(document.activeElement);
+      }
+
+      function open(focusTarget) {
         panel.hidden = false;
         trigger.setAttribute('aria-expanded', 'true');
+        if (focusTarget === 'first') focusItem(0);
+        if (focusTarget === 'last') focusItem(items.length - 1);
       }
 
-      function close() {
+      function close(returnFocus) {
         panel.hidden = true;
         trigger.setAttribute('aria-expanded', 'false');
+        if (returnFocus) trigger.focus();
       }
 
-      function toggle(event) {
-        if (event) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
         if (isOpen()) {
-          close();
+          close(false);
         } else {
           open();
         }
-      }
-
-      trigger.addEventListener('click', toggle);
-
-      document.addEventListener('click', function (event) {
-        if (!isOpen()) return;
-        if (!root.contains(event.target)) {
-          close();
-        }
       });
 
-      document.addEventListener('keydown', function (event) {
-        if (!isOpen()) return;
-        if (event.key === 'Escape') {
+      trigger.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          close();
-          trigger.focus();
+          open('first');
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          open('last');
         }
       });
 
-      panel.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', close);
+      panel.addEventListener('keydown', function (event) {
+        var index = currentIndex();
+
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          focusItem(index + 1);
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          focusItem(index - 1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          focusItem(0);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          focusItem(items.length - 1);
+        } else if (event.key === 'Escape') {
+          event.preventDefault();
+          close(true);
+        } else if (event.key === 'Tab') {
+          // Tab sort du menu en le refermant, sans voler le focus
+          close(false);
+        }
+      });
+
+      // Un element desactive reste atteignable au clavier mais ne s'active pas
+      items.forEach(function (item) {
+        item.addEventListener('click', function (event) {
+          if (item.getAttribute('aria-disabled') === 'true') {
+            event.preventDefault();
+            return;
+          }
+          close(false);
+        });
+      });
+
+      instances.push({ root: root, isOpen: isOpen, close: close });
+    });
+
+    if (!instances.length) return;
+
+    // Un seul couple de listeners globaux, quel que soit le nombre de menus
+    document.addEventListener('click', function (event) {
+      instances.forEach(function (instance) {
+        if (instance.isOpen() && !instance.root.contains(event.target)) {
+          instance.close(false);
+        }
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape') return;
+      instances.forEach(function (instance) {
+        if (instance.isOpen() && instance.root.contains(document.activeElement)) {
+          instance.close(true);
+        } else if (instance.isOpen()) {
+          instance.close(false);
+        }
       });
     });
   }
@@ -84,6 +151,9 @@
         drawer.hidden = false;
         burger.setAttribute('aria-expanded', 'true');
         burger.setAttribute('aria-label', 'Fermer le menu');
+        // L'exemple statique doit reserver la hauteur du tiroir : en position
+        // absolute, il se dimensionnerait sur la seule barre de navigation.
+        navRoot.classList.add('nav--drawer-open');
         if (!navRoot.classList.contains('nav--static')) {
           document.body.classList.add('nav-open');
         }
@@ -92,26 +162,34 @@
         if (firstLink) firstLink.focus();
       }
 
-      function close() {
+      function close(returnFocus) {
+        // Le focus ne revient au burger que pour une fermeture explicite
+        // (bouton croix, Echap, fond). Sur un lien d'ancre, il doit suivre la cible.
+        var shouldReturn = returnFocus !== false && drawer.contains(document.activeElement);
+
         drawer.hidden = true;
         burger.setAttribute('aria-expanded', 'false');
         burger.setAttribute('aria-label', 'Ouvrir le menu');
+        navRoot.classList.remove('nav--drawer-open');
         if (!navRoot.classList.contains('nav--static')) {
           document.body.classList.remove('nav-open');
         }
-        burger.focus();
+        if (shouldReturn) burger.focus();
       }
 
       burger.addEventListener('click', function () {
         if (isOpen()) {
-          close();
+          close(true);
         } else {
           open();
         }
       });
 
       closers.forEach(function (closer) {
-        closer.addEventListener('click', close);
+        var isLink = closer.tagName === 'A';
+        closer.addEventListener('click', function () {
+          close(!isLink);
+        });
       });
 
       navRoot.addEventListener('keydown', function (event) {
@@ -119,7 +197,7 @@
 
         if (event.key === 'Escape') {
           event.preventDefault();
-          close();
+          close(true);
           return;
         }
 
@@ -214,9 +292,29 @@
       });
     }
 
+    // Frères directs de la modale : rendus inertes tant qu'elle est ouverte
+    function backgroundNodes() {
+      return Array.prototype.slice.call(document.body.children).filter(function (el) {
+        return el !== modal;
+      });
+    }
+
+    function setBackgroundInert(inert) {
+      backgroundNodes().forEach(function (el) {
+        if (inert) {
+          el.setAttribute('inert', '');
+          el.setAttribute('aria-hidden', 'true');
+        } else {
+          el.removeAttribute('inert');
+          el.removeAttribute('aria-hidden');
+        }
+      });
+    }
+
     function openModal() {
       modal.hidden = false;
       document.body.classList.add('modal-open');
+      setBackgroundInert(true);
 
       var focusable = getFocusable();
       var first = focusable[0];
@@ -226,6 +324,7 @@
     function closeModal() {
       modal.hidden = true;
       document.body.classList.remove('modal-open');
+      setBackgroundInert(false);
       openBtn.focus();
     }
 
@@ -306,9 +405,28 @@
       toast.appendChild(closeBtn);
       region.appendChild(toast);
 
-      window.setTimeout(function () {
-        if (toast.parentNode) dismissToast(toast);
-      }, 5000);
+      // Le compte a rebours est suspendu au survol et au focus clavier (WCAG 2.2.1)
+      var timer = null;
+
+      function startTimer() {
+        if (timer) return;
+        timer = window.setTimeout(function () {
+          if (toast.parentNode) dismissToast(toast);
+        }, 5000);
+      }
+
+      function pauseTimer() {
+        if (!timer) return;
+        window.clearTimeout(timer);
+        timer = null;
+      }
+
+      toast.addEventListener('mouseenter', pauseTimer);
+      toast.addEventListener('mouseleave', startTimer);
+      toast.addEventListener('focusin', pauseTimer);
+      toast.addEventListener('focusout', startTimer);
+
+      startTimer();
     }
 
     Object.keys(messages).forEach(function (variant) {

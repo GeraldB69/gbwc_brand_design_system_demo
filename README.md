@@ -1,6 +1,6 @@
-# GB Web Conseil - Charte graphique
+# GB Web Conseil — Charte graphique
 
-Exemple d'un design system utile à la mise en place d'un nouveau projet: couleurs, typographie, composants UI.
+Démo interactive du design system : couleurs, typographie, composants UI.
 
 **Voir en ligne :** <https://geraldb69.github.io/gbwc_brand_design_system_demo/>
 

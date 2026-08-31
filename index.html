@@ -3,12 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GB Web Conseil - Charte Graphique</title>
-  <meta name="description" content="Charte graphique de la société GB Web Conseil">
+  <title>Design system — GB Web Conseil</title>
+  <meta name="description" content="Design system GB Web Conseil : palette, typographie, tokens et composants d’interface accessibles.">
+  <!-- Valeur initiale ; theme.js la resynchronise sur le theme explicite (data-theme) -->
+  <meta name="theme-color" content="#00487C" id="meta-theme-color">
+  <link rel="canonical" href="https://geraldb69.github.io/gbwc_brand_design_system_demo/">
+  <link rel="icon" href="assets/logo-symbol.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo-symbol.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GB Web Conseil">
+  <meta property="og:title" content="Design system GB Web Conseil">
+  <meta property="og:description" content="Palette, typographie, tokens et composants d’interface accessibles.">
+  <meta property="og:url" content="https://geraldb69.github.io/gbwc_brand_design_system_demo/">
+  <meta property="og:image" content="https://geraldb69.github.io/gbwc_brand_design_system_demo/assets/logo-full.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 
   <script>
     (function () {
@@ -28,6 +42,8 @@
   <script src="components-demo.js" defer></script>
 </head>
 <body>
+
+  <a href="#contenu" class="skip-link">Aller au contenu principal</a>
 
   <header class="demo-header">
     <div class="container">
@@ -62,7 +78,8 @@
           </button>
           <div class="dropdown__panel" id="nav-more-menu" role="menu" hidden>
             <ul class="dropdown__list">
-              <li role="none"><a href="#breadcrumb" class="dropdown__link" role="menuitem">Fil d'Ariane</a></li>
+              <li role="none"><a href="#foundations" class="dropdown__link" role="menuitem">Fondations</a></li>
+              <li role="none"><a href="#breadcrumb" class="dropdown__link" role="menuitem">Fil d’Ariane</a></li>
               <li role="none"><a href="#tabs" class="dropdown__link" role="menuitem">Onglets</a></li>
               <li role="none"><a href="#modal" class="dropdown__link" role="menuitem">Modale</a></li>
               <li role="none"><a href="#pagination" class="dropdown__link" role="menuitem">Pagination</a></li>
@@ -107,13 +124,14 @@
           <li><a href="#logo" class="nav__drawer-link" data-nav-close>Logo</a></li>
           <li><a href="#colors" class="nav__drawer-link" data-nav-close>Couleurs</a></li>
           <li><a href="#typography" class="nav__drawer-link" data-nav-close>Typographie</a></li>
+          <li><a href="#foundations" class="nav__drawer-link" data-nav-close>Fondations</a></li>
           <li><a href="#buttons" class="nav__drawer-link" data-nav-close>Boutons</a></li>
           <li><a href="#forms" class="nav__drawer-link" data-nav-close>Formulaires</a></li>
           <li><a href="#cards" class="nav__drawer-link" data-nav-close>Cartes</a></li>
           <li><a href="#badges" class="nav__drawer-link" data-nav-close>Badges</a></li>
           <li><a href="#alerts" class="nav__drawer-link" data-nav-close>Alertes</a></li>
           <li><a href="#navigation" class="nav__drawer-link" data-nav-close>Navigation</a></li>
-          <li><a href="#breadcrumb" class="nav__drawer-link" data-nav-close>Fil d'Ariane</a></li>
+          <li><a href="#breadcrumb" class="nav__drawer-link" data-nav-close>Fil d’Ariane</a></li>
           <li><a href="#tabs" class="nav__drawer-link" data-nav-close>Onglets</a></li>
           <li><a href="#modal" class="nav__drawer-link" data-nav-close>Modale</a></li>
           <li><a href="#pagination" class="nav__drawer-link" data-nav-close>Pagination</a></li>
@@ -128,7 +146,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="contenu" tabindex="-1">
 
     <section id="logo" class="demo-section">
       <div class="container">
@@ -138,7 +156,7 @@
         <div class="logo-showcase">
           <figure class="logo-showcase__item">
             <div class="logo-showcase__preview logo-showcase__preview--dark">
-              <img src="assets/logo-full.png" alt="Logo sur fond noir" class="logo-showcase__img logo-showcase__img--full">
+              <img src="assets/logo-full.png" alt="Logo sur fond noir" class="logo-showcase__img logo-showcase__img--full" width="441" height="522" loading="lazy" decoding="async">
             </div>
             <figcaption class="logo-showcase__caption">
               <strong>Complet, fond sombre</strong>
@@ -148,7 +166,7 @@
 
           <figure class="logo-showcase__item">
             <div class="logo-showcase__preview logo-showcase__preview--light">
-              <img src="assets/logo-full-transparent.png" alt="Logo fond transparent" class="logo-showcase__img logo-showcase__img--full">
+              <img src="assets/logo-full-transparent.png" alt="Logo fond transparent" class="logo-showcase__img logo-showcase__img--full" width="441" height="522" loading="lazy" decoding="async">
             </div>
             <figcaption class="logo-showcase__caption">
               <strong>Complet, transparent</strong>
@@ -158,7 +176,7 @@
 
           <figure class="logo-showcase__item">
             <div class="logo-showcase__preview logo-showcase__preview--light">
-              <img src="assets/logo-symbol.png" alt="Symbole" class="logo-showcase__img logo-showcase__img--symbol">
+              <img src="assets/logo-symbol.png" alt="Symbole" class="logo-showcase__img logo-showcase__img--symbol" width="649" height="649" loading="lazy" decoding="async">
             </div>
             <figcaption class="logo-showcase__caption">
               <strong>Symbole</strong>
@@ -204,6 +222,54 @@
           </div>
         </div>
 
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Secondaire (gris bleutés)</h3>
+          <p class="demo-subsection__desc">Échelle alternative à <code>neutral</code>, réservée aux fonds et textes bleutés. Les composants actuels utilisent <code>neutral</code>.</p>
+          <div class="swatch-grid">
+            <div class="swatch">
+              <div class="swatch__color" style="background: #F0F4F8;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-50</span><span class="swatch__hex">#F0F4F8</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #D9E2EC;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-100</span><span class="swatch__hex">#D9E2EC</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #BCCCDC;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-200</span><span class="swatch__hex">#BCCCDC</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #9FB3C8;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-300</span><span class="swatch__hex">#9FB3C8</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #829AB1;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-400</span><span class="swatch__hex">#829AB1</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #627D98;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-500</span><span class="swatch__hex">#627D98</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #486581;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-600</span><span class="swatch__hex">#486581</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #334E68;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-700</span><span class="swatch__hex">#334E68</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #243B53;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-800</span><span class="swatch__hex">#243B53</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #102A43;"></div>
+              <div class="swatch__info"><span class="swatch__name">secondary-900</span><span class="swatch__hex">#102A43</span></div>
+            </div>
+          </div>
+        </div>
+
         <div class="demo-subsection">
           <h3 class="demo-subsection__title">Sémantiques</h3>
           <div class="swatch-grid">
@@ -222,6 +288,28 @@
             <div class="swatch">
               <div class="swatch__color" style="background: #2563EB;"></div>
               <div class="swatch__info"><span class="swatch__name">info-500</span><span class="swatch__hex">#2563EB</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Sémantiques — niveau 600 (survol)</h3>
+          <div class="swatch-grid">
+            <div class="swatch">
+              <div class="swatch__color" style="background: #047857;"></div>
+              <div class="swatch__info"><span class="swatch__name">success-600</span><span class="swatch__hex">#047857</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #B45309;"></div>
+              <div class="swatch__info"><span class="swatch__name">warning-600</span><span class="swatch__hex">#B45309</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #B91C1C;"></div>
+              <div class="swatch__info"><span class="swatch__name">error-600</span><span class="swatch__hex">#B91C1C</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch__color" style="background: #1D4ED8;"></div>
+              <div class="swatch__info"><span class="swatch__name">info-600</span><span class="swatch__hex">#1D4ED8</span></div>
             </div>
           </div>
         </div>
@@ -296,11 +384,115 @@
         </div>
         <div class="type-sample">
           <div class="type-sample__meta">
+            <code class="type-sample__token">line-height-loose</code>
+            <span class="type-sample__spec">Inter · 16px / 1rem · interlignage 1.75 · contenu éditorial long</span>
+          </div>
+          <p class="type-body-md" style="line-height: var(--line-height-loose);">Nous accompagnons les entreprises dans la conception et la refonte de leurs sites : cadrage des besoins, architecture de l’information, intégration et mise en production. L’interlignage large facilite la lecture des textes longs.</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
+            <code class="type-sample__token">letter-spacing-widest</code>
+            <span class="type-sample__spec">Inter · 12px / 0.75rem · Semibold 600 · uppercase · interlettrage 0.1em · usage décoratif limité</span>
+          </div>
+          <p class="type-overline" style="letter-spacing: var(--letter-spacing-widest);">Conseil et développement</p>
+        </div>
+        <div class="type-sample">
+          <div class="type-sample__meta">
             <code class="type-sample__token">overline</code>
             <span class="type-sample__spec">Inter · 12px / 0.75rem · Semibold 600 · uppercase · letter-spacing-wider</span>
           </div>
           <p class="type-overline">Développement web</p>
         </div>
+      </div>
+    </section>
+
+    <section id="foundations" class="demo-section">
+      <div class="container">
+        <h2 class="demo-section__title">Fondations</h2>
+        <p class="demo-section__desc">Rayons et ombres définis dans <code>tokens/radii.json</code> et <code>tokens/shadows.json</code>. Les espacements, tailles d’icônes et alias par composant sont documentés dans <code>guidelines/</code>.</p>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Rayons</h3>
+          <div class="token-grid">
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--radius" style="border-radius: var(--radius-none);"></span></div>
+              <span class="token-card__name">radius-none</span>
+              <span class="token-card__value">0</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--radius" style="border-radius: var(--radius-sm);"></span></div>
+              <span class="token-card__name">radius-sm</span>
+              <span class="token-card__value">2px</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--radius" style="border-radius: var(--radius-md);"></span></div>
+              <span class="token-card__name">radius-md</span>
+              <span class="token-card__value">4px</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--radius" style="border-radius: var(--radius-lg);"></span></div>
+              <span class="token-card__name">radius-lg</span>
+              <span class="token-card__value">8px</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--radius" style="border-radius: var(--radius-xl);"></span></div>
+              <span class="token-card__name">radius-xl</span>
+              <span class="token-card__value">12px</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--radius" style="border-radius: var(--radius-2xl);"></span></div>
+              <span class="token-card__name">radius-2xl</span>
+              <span class="token-card__value">16px</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--radius" style="border-radius: var(--radius-full);"></span></div>
+              <span class="token-card__name">radius-full</span>
+              <span class="token-card__value">9999px</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-subsection">
+          <h3 class="demo-subsection__title">Ombres</h3>
+          <div class="token-grid">
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--shadow" style="box-shadow: var(--shadow-0);"></span></div>
+              <span class="token-card__name">shadow-0</span>
+              <span class="token-card__value">none</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--shadow" style="box-shadow: var(--shadow-1);"></span></div>
+              <span class="token-card__name">shadow-1</span>
+              <span class="token-card__value">élévation 1</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--shadow" style="box-shadow: var(--shadow-2);"></span></div>
+              <span class="token-card__name">shadow-2</span>
+              <span class="token-card__value">élévation 2</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--shadow" style="box-shadow: var(--shadow-3);"></span></div>
+              <span class="token-card__name">shadow-3</span>
+              <span class="token-card__value">élévation 3</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--shadow" style="box-shadow: var(--shadow-4);"></span></div>
+              <span class="token-card__name">shadow-4</span>
+              <span class="token-card__value">élévation 4</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--shadow" style="box-shadow: var(--shadow-5);"></span></div>
+              <span class="token-card__name">shadow-5</span>
+              <span class="token-card__value">élévation 5</span>
+            </div>
+            <div class="token-card">
+              <div class="token-card__demo"><span class="token-sample--shadow" style="box-shadow: var(--shadow-inner-subtle);"></span></div>
+              <span class="token-card__name">shadow-inner-subtle</span>
+              <span class="token-card__value">ombre interne</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -348,13 +540,13 @@
           <div>
             <div class="form-group">
               <label for="name" class="form-label">Nom complet</label>
-              <input type="text" id="name" class="form-input" placeholder="Jean Dupont">
-              <p class="form-hint">Tel qu'il figurera sur le devis.</p>
+              <input type="text" id="name" name="name" class="form-input" autocomplete="name" placeholder="Ex. : Jean Dupont…">
+              <p class="form-hint">Tel qu’il figurera sur le devis.</p>
             </div>
 
             <div class="form-group">
               <label for="email" class="form-label">Adresse e-mail</label>
-              <input type="email" id="email" class="form-input form-input--error" value="email-invalide" aria-invalid="true" aria-describedby="email-error">
+              <input type="email" id="email" name="email" class="form-input form-input--error" autocomplete="email" inputmode="email" spellcheck="false" value="email-invalide" aria-invalid="true" aria-describedby="email-error">
               <p id="email-error" class="form-error" role="alert">
                 <span aria-hidden="true">✕</span> Veuillez saisir une adresse e-mail valide.
               </p>
@@ -362,7 +554,7 @@
 
             <div class="form-group">
               <label for="service" class="form-label">Service</label>
-              <select id="service" class="form-select">
+              <select id="service" name="service" class="form-select" autocomplete="off">
                 <option value="">Choisir…</option>
                 <option value="audit">Audit technique</option>
                 <option value="dev">Développement sur mesure</option>
@@ -372,7 +564,7 @@
 
             <div class="form-group">
               <label for="message" class="form-label">Message</label>
-              <textarea id="message" class="form-textarea" placeholder="Décrivez votre besoin…"></textarea>
+              <textarea id="message" name="message" class="form-textarea" autocomplete="off" placeholder="Ex. : refonte d’un site vitrine de 12 pages…"></textarea>
             </div>
           </div>
 
@@ -393,14 +585,14 @@
 
             <div class="form-group">
               <label class="form-check">
-                <input type="checkbox" class="form-check__input" id="consent">
-                <span class="form-check__label">J'accepte d'être recontacté</span>
+                <input type="checkbox" class="form-check__input" id="consent" name="consent" autocomplete="off">
+                <span class="form-check__label">J’accepte d’être recontacté</span>
               </label>
             </div>
 
             <div class="form-group">
               <label for="disabled-field" class="form-label">Champ désactivé</label>
-              <input type="text" id="disabled-field" class="form-input" value="Non modifiable" disabled>
+              <input type="text" id="disabled-field" name="disabled-field" class="form-input" autocomplete="off" value="Non modifiable" disabled>
             </div>
 
             <button type="button" class="btn btn--primary btn--md">Envoyer</button>
@@ -479,7 +671,7 @@
             <span class="alert__icon" aria-hidden="true">ℹ</span>
             <div class="alert__content">
               <p class="alert__title">Information</p>
-              <p class="alert__message">Votre demande sera traitée sous 48 h ouvrées.</p>
+              <p class="alert__message">Votre demande sera traitée sous 48&nbsp;h ouvrées.</p>
             </div>
           </div>
 
@@ -495,14 +687,14 @@
             <span class="alert__icon" aria-hidden="true">⚠</span>
             <div class="alert__content">
               <p class="alert__title">Profil incomplet</p>
-              <p class="alert__message">Complétez votre profil avant d'envoyer une demande de devis.</p>
+              <p class="alert__message">Complétez votre profil avant d’envoyer une demande de devis.</p>
             </div>
           </div>
 
           <div class="alert alert--error" role="alert">
             <span class="alert__icon" aria-hidden="true">✕</span>
             <div class="alert__content">
-              <p class="alert__title">Échec de l'envoi</p>
+              <p class="alert__title">Échec de l’envoi</p>
               <p class="alert__message">Réessayez ou contactez-nous par e-mail.</p>
             </div>
           </div>
@@ -513,7 +705,7 @@
     <section id="navigation" class="demo-section">
       <div class="container">
         <h2 class="demo-section__title">Navigation</h2>
-        <p class="demo-section__desc">Breakpoint burger : <strong>1024px</strong>. La barre sticky en tête de page réutilise ces classes pour parcourir cette démo.</p>
+        <p class="demo-section__desc">Breakpoint burger : <strong>1024&nbsp;px</strong>. La barre sticky en tête de page réutilise ces classes pour parcourir cette démo.</p>
 
         <div class="component-preview">
           <nav class="nav nav--static" aria-label="Exemple de navigation" data-nav>
@@ -580,10 +772,10 @@
 
     <section id="breadcrumb" class="demo-section">
       <div class="container">
-        <h2 class="demo-section__title">Fil d'Ariane</h2>
+        <h2 class="demo-section__title">Fil d’Ariane</h2>
         <p class="demo-section__desc">Navigation secondaire pour situer la page dans la hiérarchie du site.</p>
 
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <nav class="breadcrumb" aria-label="Fil d’Ariane">
           <ol class="breadcrumb__list">
             <li class="breadcrumb__item">
               <a href="#" class="breadcrumb__link">Accueil</a>
@@ -608,18 +800,18 @@
 
         <div class="tabs" data-tabs>
           <div class="tabs__list" role="tablist" aria-label="Détails du service">
-            <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true">Vue d'ensemble</button>
+            <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true">Vue d’ensemble</button>
             <button type="button" class="tabs__tab" role="tab" id="tab-deliverables" aria-controls="panel-deliverables" aria-selected="false" tabindex="-1">Livrables</button>
             <button type="button" class="tabs__tab" role="tab" id="tab-pricing" aria-controls="panel-pricing" aria-selected="false" tabindex="-1">Tarifs</button>
           </div>
           <div class="tabs__panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview">
-            <p>Analyse de votre stack, identification des risques et feuille de route priorisée sur 4 à 6 semaines.</p>
+            <p>Analyse de votre stack, identification des risques et feuille de route priorisée sur 4 à 6&nbsp;semaines.</p>
           </div>
           <div class="tabs__panel" role="tabpanel" id="panel-deliverables" aria-labelledby="tab-deliverables" hidden>
-            <p>Rapport écrit, restitution orale et liste d'actions classées par impact et effort.</p>
+            <p>Rapport écrit, restitution orale et liste d’actions classées par impact et effort.</p>
           </div>
           <div class="tabs__panel" role="tabpanel" id="panel-pricing" aria-labelledby="tab-pricing" hidden>
-            <p>Forfait selon la taille du projet. Devis après un premier échange de 30 minutes.</p>
+            <p>Forfait selon la taille du projet. Devis après un premier échange de 30&nbsp;minutes.</p>
           </div>
         </div>
       </div>
@@ -680,7 +872,7 @@
     <section id="avatar" class="demo-section">
       <div class="container">
         <h2 class="demo-section__title">Avatar</h2>
-        <p class="demo-section__desc">Représentation d'une personne ou d'une équipe.</p>
+        <p class="demo-section__desc">Représentation d’une personne ou d’une équipe.</p>
 
         <div class="demo-subsection">
           <h3 class="demo-subsection__title">Initiales</h3>
@@ -704,12 +896,12 @@
     <section id="progress" class="demo-section">
       <div class="container">
         <h2 class="demo-section__title">Barre de progression</h2>
-        <p class="demo-section__desc">Indiquer l'avancement d'une tâche.</p>
+        <p class="demo-section__desc">Indiquer l’avancement d’une tâche.</p>
 
         <div class="demo-subsection">
           <label class="progress__label" for="progress-demo">Import du rapport</label>
-          <progress class="progress progress--md" id="progress-demo" max="100" value="60">60 %</progress>
-          <span class="progress__value">60 %</span>
+          <progress class="progress progress--md" id="progress-demo" max="100" value="60">60&nbsp;%</progress>
+          <span class="progress__value">60&nbsp;%</span>
         </div>
 
         <div class="demo-subsection">
@@ -740,19 +932,19 @@
                 <td>Refonte intranet</td>
                 <td>Acme SA</td>
                 <td class="table__cell--center"><span class="badge badge--success badge--sm">En cours</span></td>
-                <td class="table__cell--numeric">12 400 €</td>
+                <td class="table__cell--numeric">12&nbsp;400&nbsp;€</td>
               </tr>
               <tr>
                 <td>Audit stack</td>
                 <td>Beta SARL</td>
                 <td class="table__cell--center"><span class="badge badge--warning badge--sm">En attente</span></td>
-                <td class="table__cell--numeric">3 200 €</td>
+                <td class="table__cell--numeric">3&nbsp;200&nbsp;€</td>
               </tr>
               <tr>
                 <td>Maintenance annuelle</td>
                 <td>Gamma SAS</td>
                 <td class="table__cell--center"><span class="badge badge--default badge--sm">Clôturé</span></td>
-                <td class="table__cell--numeric">8 000 €</td>
+                <td class="table__cell--numeric">8&nbsp;000&nbsp;€</td>
               </tr>
             </tbody>
           </table>
@@ -827,7 +1019,7 @@
     <section class="cta-section">
       <div class="container">
         <h2 class="cta-section__title">Un projet en tête ?</h2>
-        <p class="cta-section__desc">Parlons-en lors d'un premier échange.</p>
+        <p class="cta-section__desc">Parlons-en lors d’un premier échange.</p>
         <div class="demo-row demo-row--center">
           <a href="#" class="btn btn--inverse btn--lg">Demander un devis</a>
           <a href="#" class="btn btn--ghost btn--lg">Nos références</a>
@@ -839,7 +1031,7 @@
 
   <footer class="demo-footer">
     <div class="container">
-      <p>GB Web Conseil - Design System v1.3 - Usage interne et référence d'implémentation</p>
+      <p>GB Web Conseil · Design System v1.5.0 · Usage interne et référence d’implémentation</p>
     </div>
   </footer>
 
@@ -847,13 +1039,13 @@
     <div class="modal__overlay" data-modal-close></div>
     <div class="modal__dialog">
       <header class="modal__header">
-        <h2 class="modal__title" id="demo-modal-title">Confirmer l'envoi</h2>
+        <h2 class="modal__title" id="demo-modal-title">Confirmer l’envoi</h2>
         <button type="button" class="modal__close" data-modal-close aria-label="Fermer">
           <span aria-hidden="true">✕</span>
         </button>
       </header>
       <div class="modal__body">
-        <p id="demo-modal-desc">Votre demande de devis sera transmise à l'équipe. Vous recevrez une confirmation par e-mail.</p>
+        <p id="demo-modal-desc">Votre demande de devis sera transmise à l’équipe. Vous recevrez une confirmation par e-mail.</p>
       </div>
       <footer class="modal__footer">
         <button type="button" class="btn btn--secondary btn--md" data-modal-close>Annuler</button>
@@ -862,7 +1054,7 @@
     </div>
   </div>
 
-  <div class="toast-region" id="toast-region" role="region" aria-label="Notifications" aria-live="polite"></div>
+  <div class="toast-region" id="toast-region" role="region" aria-label="Notifications"></div>
 
 </body>
 </html>

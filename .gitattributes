@@ -1,0 +1,12 @@
+# Fins de ligne : LF partout, conformement a .editorconfig (end_of_line = lf).
+# text=auto normalise en LF dans l'index ; eol=lf force LF aussi dans la copie
+# de travail, y compris sous Windows, pour que demo/ et export/ restent identiques.
+* text=auto eol=lf
+
+# Binaires : aucune conversion.
+*.png binary
+*.jpg binary
+*.ico binary
+*.zip binary
+*.woff binary
+*.woff2 binary

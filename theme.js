@@ -6,6 +6,7 @@
 (function () {
   const STORAGE_KEY = 'gbwc-demo-theme';
   const root = document.documentElement;
+  const THEME_COLORS = { light: '#00487C', dark: '#000000' };
 
   function normalizeTheme(value) {
     return value === 'dark' ? 'dark' : 'light';
@@ -23,6 +24,15 @@
 
   function getToggle() {
     return document.getElementById('theme-toggle');
+  }
+
+  // Le theme est explicite (data-theme), pas derive de prefers-color-scheme :
+  // la meta doit donc etre resynchronisee a chaque bascule.
+  function updateThemeColor(theme) {
+    const meta = document.getElementById('meta-theme-color');
+    if (meta) {
+      meta.setAttribute('content', THEME_COLORS[theme] || THEME_COLORS.light);
+    }
   }
 
   function updateToggleUI(theme) {
@@ -57,6 +67,7 @@
       updateUrl(normalized);
     }
 
+    updateThemeColor(normalized);
     updateToggleUI(normalized);
   }
 
