@@ -2,7 +2,9 @@
 
 Démo interactive du design system : couleurs, typographie, composants UI.
 
-**Voir en ligne :** <https://geraldb69.github.io/gbwc_brand_design_system_demo/>
+**Le design system  :** <https://geraldb69.github.io/gbwc_brand_design_system_demo/>
+
+**Le site final :** <https://gbwebconseil.fr/>
 
 ## Fichiers
 
